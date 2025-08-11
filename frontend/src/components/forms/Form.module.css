@@ -1,0 +1,135 @@
+.form {
+    background-color: var(--bg-card);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px var(--shadow-color);
+    color: var(--text-primary);
+    max-width: 450px;
+    margin: 20px auto;
+    border: 1px solid var(--border-color);
+}
+
+.form h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: var(--text-primary);
+    font-size: 1.8rem;
+}
+
+.formGroup {
+    margin-bottom: 20px;
+}
+
+.formGroup label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+}
+
+.formGroup input[type="text"],
+.formGroup input[type="email"],
+.formGroup input[type="password"],
+.formGroup input[type="url"],
+.formGroup textarea,
+.formGroup select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.formGroup input:focus,
+.formGroup textarea:focus,
+.formGroup select:focus {
+    border-color: var(--accent-primary);
+    outline: none;
+}
+
+.errorMessage {
+    color: red;
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+}
+
+.submitButton {
+    margin-top: 25px;
+}
+
+.switchFormText {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.switchFormLink {
+    background: none;
+    border: none;
+    color: var(--accent-primary);
+    cursor: pointer;
+    font-size: 0.9rem;
+    text-decoration: underline;
+    padding: 0;
+    font-family: var(--font-body);
+}
+
+.switchFormLink:hover {
+    color: var(--accent-secondary);
+}
+
+.checkboxGroup {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.checkboxItem {
+    display: flex;
+    align-items: center;
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.checkboxItem:hover {
+    border-color: var(--accent-primary);
+}
+
+.checkboxItem input[type="checkbox"] {
+    margin-right: 8px;
+    accent-color: var(--accent-primary); /* Styles the checkbox itself */
+}
+
+.checkboxItem label {
+    margin-bottom: 0; /* Override default label margin */
+    cursor: pointer;
+    color: var(--text-primary);
+}
+
+.checkboxLabel {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+}
+
+/* Light mode adjustments */
+.light .formGroup input,
+.light .formGroup textarea,
+.light .formGroup select {
+    background-color: var(--bg-secondary);
+}
+
+.light .checkboxItem {
+    background-color: var(--bg-secondary);
+}

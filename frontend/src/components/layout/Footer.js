@@ -1,5 +1,5 @@
 import React from 'react';
-import { useTheme } from '../contexts/ThemeContext';
+import { useTheme } from '../../contexts/ThemeContext';
 import styles from './Footer.module.css'; // We will create this next
 
 const Footer = () => {
