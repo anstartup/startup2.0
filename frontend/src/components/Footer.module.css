@@ -1,0 +1,85 @@
+.footer {
+    /* The background color is a slightly darker shade than the primary page background */
+    background-color: #000; 
+    border-top: 1px solid var(--border-color);
+    padding: 4rem 0 2rem;
+    margin-top: 4rem;
+}
+
+.light.footer {
+    /* In light mode, we use a soft gray to distinguish the footer */
+    background-color: #e9ecef;
+}
+
+.grid {
+    display: grid;
+    /* Creates 4 columns on desktop, wrapping to 2 then 1 on smaller screens */
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2.5rem;
+    margin-bottom: 3rem;
+}
+
+.logo {
+    color: var(--accent-primary);
+    font-size: 1.5rem;
+    font-weight: 800;
+}
+
+.about p {
+    color: var(--text-secondary);
+    margin-top: 1rem;
+    line-height: 1.7;
+}
+
+.linksCol h4 {
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.linksCol ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.linksCol ul li a {
+    color: var(--text-secondary);
+    display: block;
+    padding: 0.4rem 0;
+    transition: color 0.3s ease;
+}
+
+.linksCol ul li a:hover {
+    color: var(--accent-primary);
+}
+
+.bottomBar {
+    border-top: 1px solid var(--border-color);
+    padding-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.copyright,
+.bottomLinks a {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.bottomLinks a {
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.bottomLinks a:not(:last-child) {
+    margin-right: 1.5rem;
+}
+
+.bottomLinks a:hover {
+    color: var(--accent-primary);
+}

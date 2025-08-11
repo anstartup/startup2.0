@@ -1,0 +1,61 @@
+.features {
+    padding: 5rem 0;
+    background: #111;
+    transition: background-color 0.4s ease;
+}
+
+.light.features {
+    background: var(--bg-primary);
+}
+
+.title {
+    text-align: center;
+    /* The font-size and font-weight will be inherited from the global h2 styles */
+    margin-bottom: 3rem;
+    color: var(--text-primary);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.card {
+    background: var(--bg-card);
+    padding: 2.5rem 2rem;
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    text-align: center;
+    /* We remove the CSS transform so Framer Motion can handle it without conflict */
+    transition: box-shadow 0.3s ease;
+}
+
+.light .card {
+    box-shadow: 0 4px 30px var(--shadow-color);
+}
+
+.card:hover {
+    /* You can add a hover effect here if you like, e.g., a slightly larger shadow */
+}
+
+.light .card:hover {
+    box-shadow: 0 10px 40px -5px var(--shadow-color);
+}
+
+.icon {
+    font-size: 3rem;
+    line-height: 1;
+    margin-bottom: 1rem;
+}
+
+.card h3 {
+    color: var(--accent-primary);
+    /* Font-size will be inherited from global h3 styles */
+    margin-bottom: 1rem;
+}
+
+.card p {
+    color: var(--text-secondary);
+    line-height: 1.7;
+}

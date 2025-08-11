@@ -1,0 +1,15 @@
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: rgba(0, 212, 255, 0.5);
+    border-radius: 50%;
+    /* 'float' animation is defined globally in index.css */
+    animation-name: float;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+}
+
+.light .particle {
+    background: rgba(0, 102, 204, 0.5);
+}
