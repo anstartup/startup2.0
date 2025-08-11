@@ -1,19 +1,16 @@
 .features {
     padding: 5rem 0;
-    /* In dark mode, use a distinct background to separate the section */
     background: #111;
     transition: background-color 0.4s ease;
 }
 
 .light.features {
-    /* In light mode, blend it with the primary page background for a clean look */
     background: var(--bg-primary);
 }
 
 .title {
     text-align: center;
-    font-size: 2.5rem;
-    font-weight: 700;
+    /* The font-size and font-weight will be inherited from the global h2 styles */
     margin-bottom: 3rem;
     color: var(--text-primary);
 }
@@ -30,16 +27,16 @@
     border-radius: 16px;
     border: 1px solid var(--border-color);
     text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* We remove the CSS transform so Framer Motion can handle it without conflict */
+    transition: box-shadow 0.3s ease;
 }
 
 .light .card {
-    /* Add a subtle shadow in light mode for a floating effect */
     box-shadow: 0 4px 30px var(--shadow-color);
 }
 
 .card:hover {
-    transform: translateY(-8px);
+    /* You can add a hover effect here if you like, e.g., a slightly larger shadow */
 }
 
 .light .card:hover {
@@ -54,7 +51,7 @@
 
 .card h3 {
     color: var(--accent-primary);
-    font-size: 1.5rem;
+    /* Font-size will be inherited from global h3 styles */
     margin-bottom: 1rem;
 }
 

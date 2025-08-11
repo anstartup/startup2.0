@@ -1,12 +1,19 @@
 import React from 'react';
+import styles from './Modal.module.css';
 
 const Modal = ({ isOpen, onClose, children }) => {
     if (!isOpen) return null;
 
+    const handleBackdropClick = (e) => {
+        if (e.target === e.currentTarget) {
+            onClose();
+        }
+    };
+
     return (
-        <div className="modal" onClick={onClose}>
-            <div className="modal-content" onClick={e => e.stopPropagation()}>
-                <span className="close" onClick={onClose}>&times;</span>
+        <div className={styles.modalBackdrop} onClick={handleBackdropClick}>
+            <div className={styles.modalContent}>
+                <button className={styles.closeButton} onClick={onClose}>&times;</button>
                 {children}
             </div>
         </div>

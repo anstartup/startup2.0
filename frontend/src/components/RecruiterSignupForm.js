@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { useAuth } from '../contexts/AuthContext';
+import styles from './Form.module.css'; // Import the same form styles
+import Button from './Button';         // Import the same reusable Button
 
 const RecruiterSignupForm = ({ onClose }) => {
     const [formData, setFormData] = useState({
@@ -21,41 +23,41 @@ const RecruiterSignupForm = ({ onClose }) => {
         e.preventDefault();
         setError('');
         try {
-            // Call the signup function from AuthContext with the 'recruiter' role
             await signup(formData, 'recruiter');
-            onClose(); // Close the modal on success
+            onClose();
         } catch (err) {
             setError(err.response?.data?.message || 'Signup failed. Please try again.');
         }
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        // Apply the form className
+        <form onSubmit={handleSubmit} className={styles.form}>
             <h2>Start Hiring on Skillexer</h2>
-            {error && <p style={{ color: 'red', textAlign: 'center' }}>{error}</p>}
+            {error && <p className={styles.errorMessage}>{error}</p>}
 
-            <div className="form-group">
+            <div className={styles.formGroup}>
                 <label htmlFor="recruiterName">Your Name</label>
                 <input type="text" id="recruiterName" name="name" value={formData.name} onChange={handleChange} required />
             </div>
 
-            <div className="form-group">
+            <div className={styles.formGroup}>
                 <label htmlFor="companyName">Company Name</label>
                 <input type="text" id="companyName" name="companyName" value={formData.companyName} onChange={handleChange} required />
             </div>
 
-            <div className="form-group">
+            <div className={styles.formGroup}>
                 <label htmlFor="recruiterEmail">Work Email</label>
                 <input type="email" id="recruiterEmail" name="email" value={formData.email} onChange={handleChange} required />
             </div>
 
-            <div className="form-group">
-                <label htmlFor="recruiterPassword">Password</label> 
-                <input type="password" id="recruiterPassword" name="password" value={formData.password} onChange={handleChange} required />
+            <div className={styles.formGroup}>
+                <label htmlFor="recruiterPassword">Password (min 6 characters)</label>
+                <input type="password" id="recruiterPassword" name="password" value={formData.password} onChange={handleChange} required minLength="6" />
             </div>
 
-            <div className="form-group">
-                <label htmlFor="companySize">Company Size</label> 
+            <div className={styles.formGroup}>
+                <label htmlFor="companySize">Company Size</label>
                 <select id="companySize" name="companySize" value={formData.companySize} onChange={handleChange} required>
                     <option value="">Select Size</option>
                     <option value="1-10">1-10 employees</option>
@@ -66,11 +68,15 @@ const RecruiterSignupForm = ({ onClose }) => {
                 </select>
             </div>
 
-            <div className="form-group">
+            <div className={styles.formGroup}>
                 <label htmlFor="hiringFor">What roles are you primarily hiring for?</label>
                 <textarea id="hiringFor" name="hiringFor" rows="3" value={formData.hiringFor} onChange={handleChange}></textarea>
             </div>
-            <button type="submit" className="btn btn-primary" style={{ width: '100%' }}>Create Recruiter Account</button>
+            
+            <div className={styles.submitButton}>
+                {/* Replace the standard button with our Button component */}
+                <Button type="submit" variant="primary" style={{ width: '100%' }}>Create Recruiter Account</Button>
+            </div>
         </form>
     );
 };

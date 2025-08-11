@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { useTheme } from './contexts/ThemeContext';
+import { ThemeProvider } from './contexts/ThemeContext';
 import { AuthProvider } from './contexts/AuthContext';
-// Import other contexts if you create them, like NotificationProvider
 
 import Header from './components/Header';
 import Hero from './components/Hero';
@@ -12,60 +11,68 @@ import Modal from './components/Modal';
 import LoginForm from './components/LoginForm';
 import StudentSignupForm from './components/StudentSignupForm';
 import RecruiterSignupForm from './components/RecruiterSignupForm';
+import Button from './components/Button';
+import styles from './components/Form.module.css';
 
 function App() {
-    const { theme } = useTheme(); // Use useTheme hook here
     const [activeModal, setActiveModal] = useState(null);
     const closeModal = () => setActiveModal(null);
-
     const openModal = (modalName) => (e) => {
         if (e) e.preventDefault();
         setActiveModal(modalName);
     };
 
-    const switchToModal = (modalName) => {
-        setActiveModal(modalName);
-    }
+    const SignupChoice = () => (
+        <div className={styles.form} style={{ gap: '1rem' }}>
+            <h2>Join Skillexer</h2>
+            <p style={{ textAlign: 'center', color: 'var(--text-secondary)', margin: '0 0 1rem 0' }}>
+                Choose how you want to get started:
+            </p>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', width: '100%' }}>
+                <Button onClick={() => setActiveModal('studentSignup')} variant="primary">
+                    I'm a Student 🎓
+                </Button>
+                <Button onClick={() => setActiveModal('recruiterSignup')} variant="secondary">
+                    I'm Hiring 💼
+                </Button>
+            </div>
+        </div>
+    );
 
     return (
-        <AuthProvider>
-            <Header 
-                onLoginClick={openModal('login')} 
-                onSignupClick={openModal('signupChoice')}
-            />
-            <main>
-                <Hero 
-                    onStudentSignupClick={openModal('studentSignup')}
-                    onRecruiterSignupClick={openModal('recruiterSignup')}
+        <ThemeProvider>
+            <AuthProvider>
+                <Header 
+                    onLoginClick={openModal('login')} 
+                    onSignupClick={openModal('signupChoice')}
                 />
-                <Features />
-                <Platform />
-            </main>
-            <Footer />
+                <main>
+                    <Hero 
+                        onStudentSignupClick={openModal('studentSignup')}
+                        onRecruiterSignupClick={openModal('recruiterSignup')}
+                    />
+                    <Features />
+                    <Platform />
+                </main>
+                <Footer />
 
-            {/* --- Modals --- */}
-            <Modal isOpen={activeModal === 'login'} onClose={closeModal}>
-                <LoginForm onClose={closeModal} />
-            </Modal>
-            
-            <Modal isOpen={activeModal === 'studentSignup'} onClose={closeModal}>
-                <StudentSignupForm onClose={closeModal} />
-            </Modal>
+                <Modal isOpen={activeModal === 'login'} onClose={closeModal}>
+                    <LoginForm onClose={closeModal} onSwitchToRegister={() => setActiveModal('signupChoice')} />
+                </Modal>
+                
+                <Modal isOpen={activeModal === 'signupChoice'} onClose={closeModal}>
+                    <SignupChoice />
+                </Modal>
 
-            <Modal isOpen={activeModal === 'recruiterSignup'} onClose={closeModal}>
-                <RecruiterSignupForm onClose={closeModal} />
-                {/* <h2>Recruiter Signup (Create This Component)</h2> */}
-            </Modal>
-            
-             <Modal isOpen={activeModal === 'signupChoice'} onClose={closeModal}>
-                <h2>Join Skillexer</h2>
-                <p style={{ textAlign: 'center', margin: '1rem 0 2rem' }}>Choose how you want to get started:</p>
-                 <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center' }}>
-                     <button className="btn btn-primary" onClick={() => switchToModal('studentSignup')}>I'm a Student 🎓</button>
-                     <button className="btn btn-secondary" onClick={() => switchToModal('recruiterSignup')}>I'm Hiring 💼</button>
-                 </div>
-            </Modal>
-        </AuthProvider>
+                <Modal isOpen={activeModal === 'studentSignup'} onClose={closeModal}>
+                    <StudentSignupForm onClose={closeModal} />
+                </Modal>
+
+                <Modal isOpen={activeModal === 'recruiterSignup'} onClose={closeModal}>
+                    <RecruiterSignupForm onClose={closeModal} />
+                </Modal>
+            </AuthProvider>
+        </ThemeProvider>
     );
 }
 

@@ -1,20 +1,24 @@
 import { useState, useEffect } from 'react';
 
-export default function useOnScreen(ref, rootMargin = '0px') {
+const useOnScreen = (ref) => {
     const [isIntersecting, setIntersecting] = useState(false);
 
     useEffect(() => {
         const observer = new IntersectionObserver(
             ([entry]) => {
-                setIntersecting(entry.isIntersecting);
+                // This will fire when the element's visibility changes
+                if (entry.isIntersecting) {
+                    setIntersecting(true);
+                    // Once visible, we don't need to observe it anymore
+                    observer.unobserve(entry.target);
+                }
             },
             {
-                rootMargin,
+                threshold: 0.1, // Trigger when 10% of the element is visible
             }
         );
 
         const currentRef = ref.current;
-
         if (currentRef) {
             observer.observe(currentRef);
         }
@@ -24,7 +28,9 @@ export default function useOnScreen(ref, rootMargin = '0px') {
                 observer.unobserve(currentRef);
             }
         };
-    }, [ref, rootMargin]);
+    }, [ref]); // Only re-run the effect if the ref changes
 
     return isIntersecting;
-}
+};
+
+export default useOnScreen;

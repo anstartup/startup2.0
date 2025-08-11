@@ -1,13 +1,10 @@
 .header {
-    /* Positioning and Floating Effect */
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 1000;
-    padding: 0.75rem 0; /* Slightly reduced padding for a sleeker look */
-
-    /* Background and Transition */
+    padding: 0.75rem 0;
     background: rgba(10, 10, 10, 0.75);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border-color);
@@ -15,7 +12,7 @@
 }
 
 .light.header {
-    background: rgba(248, 249, 250, 0.75); /* Using the light primary bg color */
+    background: rgba(248, 249, 250, 0.75);
     box-shadow: 0 2px 10px var(--shadow-color);
 }
 
@@ -23,7 +20,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 56px; /* A standard header height */
+    height: 56px;
 }
 
 .logo {
@@ -32,28 +29,30 @@
     color: var(--accent-primary);
 }
 
-/* --- NEW Attractive Link Styles --- */
+/* --- Polished Link Styles --- */
 .navLinks {
     display: flex;
     list-style: none;
-    gap: 0.5rem; /* Reduced gap for a tighter group */
+    gap: 0.5rem;
     margin: 0 auto;
 }
 
 .navLinks a {
-    color: var(--text-secondary); /* Start with secondary color for subtlety */
+    /* This removes the underline */
+    text-decoration: none;
+
+    color: var(--text-secondary);
     font-weight: 500;
-    padding: 0.5rem 1rem; /* Padding to create the pill shape */
-    border-radius: 999px; /* This creates the capsule shape */
+    padding: 0.5rem 1.25rem; /* Padding for the capsule shape */
+    border-radius: 999px; /* This makes it a capsule */
     transition: all 0.3s ease;
 }
 
 .navLinks a:hover {
-    color: var(--text-primary); /* Make text primary on hover */
-    background-color: var(--shadow-color); /* Use shadow color for a soft highlight */
+    color: var(--text-primary);
+    background-color: var(--shadow-color); /* The subtle highlight on hover */
 }
-
-/* --- End of New Styles --- */
+/* --- End of Link Styles --- */
 
 .authButtons {
     display: flex;
@@ -68,7 +67,7 @@
 }
 
 .welcomeMessage {
-    display: none; /* Hiding by default for a cleaner look, can be enabled for desktop */
+    display: none;
 }
 
 .themeToggle {
@@ -95,7 +94,7 @@
 /* --- Responsive Design --- */
 @media (min-width: 768px) {
     .welcomeMessage {
-        display: block; /* Show welcome message on larger screens */
+        display: block;
         color: var(--text-secondary);
         font-weight: 500;
     }
@@ -103,7 +102,7 @@
 
 @media (max-width: 768px) {
     .navLinks {
-        display: none; /* Hide nav links on smaller screens */
+        display: none;
     }
     .nav {
         justify-content: space-between;

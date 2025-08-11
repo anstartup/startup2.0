@@ -1,15 +1,32 @@
 import React from 'react';
 import { useTheme } from '../contexts/ThemeContext';
-import styles from './Features.module.css'; // We will create this next
+import styles from './Features.module.css';
+import { motion } from 'framer-motion';
 
-// A sub-component for individual feature cards to keep the code organized
+// Animation for the grid container
+const containerVariants = {
+    hidden: { opacity: 0 },
+    show: {
+        opacity: 1,
+        transition: {
+            staggerChildren: 0.2, // Each card animates 0.2s after the one before it
+        },
+    },
+};
+
+// Animation for each individual card
+const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    show: { y: 0, opacity: 1, transition: { duration: 0.6, ease: "easeOut" } },
+};
+
 const FeatureCard = ({ icon, title, text }) => {
     return (
-        <div className={styles.card}>
+        <motion.div className={styles.card} variants={itemVariants}>
             <div className={styles.icon}>{icon}</div>
             <h3>{title}</h3>
             <p>{text}</p>
-        </div>
+        </motion.div>
     );
 };
 
@@ -21,7 +38,14 @@ const Features = () => {
         <section className={`${styles.features} ${themeClass}`} id="features">
             <div className="container">
                 <h2 className={styles.title}>Why Skillexer Works</h2>
-                <div className={styles.grid}>
+                
+                <motion.div 
+                    className={styles.grid}
+                    variants={containerVariants}
+                    initial="hidden"
+                    whileInView="show" // This triggers the animation when the section scrolls into view
+                    viewport={{ once: true, amount: 0.2 }} // Ensures the animation only runs once
+                >
                     <FeatureCard 
                         icon="🚀" 
                         title="No Resume Required" 
@@ -37,7 +61,7 @@ const Features = () => {
                         title="Anonymous First" 
                         text="No bias based on college, name, or background. Recruiters see your skills first, identity later."
                     />
-                </div>
+                </motion.div>
             </div>
         </section>
     );

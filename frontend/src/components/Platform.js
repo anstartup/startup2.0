@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useTheme } from '../contexts/ThemeContext';
 import styles from './Platform.module.css';
 import Button from './Button';
+import ProfileCard from './ProfileCard'; // Import the new component
 
 const Platform = () => {
     const { theme } = useTheme();
@@ -30,7 +31,7 @@ const Platform = () => {
 
                 {activeTab === 'student' && (
                     <div className={styles.platformGrid}>
-                        <div className={`${styles.platformText} ${themeClass}`}>
+                        <div className={styles.platformText}>
                             <h3>Build Your Skill Profile</h3>
                             <p>Connect your GitHub, showcase your projects, and let our platform analyze your technical skills. No CGPA, no college tags—just pure talent.</p>
                              <ul>
@@ -41,23 +42,20 @@ const Platform = () => {
                              </ul>
                              <Button variant="primary">Create Profile</Button>
                         </div>
-                        <div className={`${styles.platformDemo} ${themeClass}`}>
-                             <div className={`${styles.card} ${themeClass}`}>
-                                 <h4>Anonymous Student #247</h4>
-                                 <p>Full Stack Developer</p>
-                                 <div>
-                                     <span className={`${styles.skillTag} ${themeClass}`}>React</span>
-                                     <span className={`${styles.skillTag} ${themeClass}`}>Node.js</span>
-                                     <span className={`${styles.skillTag} ${themeClass}`}>Python</span>
-                                 </div>
-                             </div>
+                        {/* Use the new ProfileCard component */}
+                        <div className={styles.demoContainer}>
+                            <ProfileCard 
+                                name="Anonymous Student #247"
+                                role="Full Stack Developer"
+                                skills={['React', 'Node.js', 'Python']}
+                            />
                         </div>
                     </div>
                 )}
                 
-                 {activeTab === 'recruiter' && (
-                    <div className={styles.platformGrid}>
-                         <div className={`${styles.platformText} ${themeClass}`}>
+                {activeTab === 'recruiter' && (
+                   <div className={styles.platformGrid}>
+                         <div className={styles.platformText}>
                             <h3>Find Real Builders</h3>
                             <p>Post your needs and get matched with students who have actually built what you're looking for. No more resume screening.</p>
                              <ul>
@@ -67,15 +65,13 @@ const Platform = () => {
                              </ul>
                              <Button variant="primary">Start Hiring</Button>
                         </div>
-                        <div className={`${styles.platformDemo} ${themeClass}`}>
-                             <div className={`${styles.card} ${themeClass}`}>
-                                 <h4>React Developer for EdTech Startup</h4>
-                                 <p>Skills Needed: React, Firebase, UI/UX</p>
-                                 <div>
-                                     <span className={`${styles.skillTag} ${themeClass}`}>3 Perfect Matches</span>
-                                     <span className={`${styles.skillTag} ${themeClass}`}>7 Good Matches</span>
-                                 </div>
-                             </div>
+                        <div className={styles.demoContainer}>
+                           {/* You can create a similar JobCard component here */}
+                           <ProfileCard 
+                                name="AI-Matched Candidate"
+                                role="Machine Learning Engineer"
+                                skills={['Python', 'TensorFlow', 'NLP']}
+                            />
                         </div>
                     </div>
                 )}
