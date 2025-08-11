@@ -1,0 +1,36 @@
+.btn {
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    font-size: 1rem;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    filter: brightness(1.1);
+}
+
+/* Primary Button */
+.primary {
+    background: var(--accent-primary);
+    color: white;
+}
+
+.primary:hover {
+     box-shadow: 0 6px 20px -5px var(--accent-primary);
+}
+
+/* Secondary Button */
+.secondary {
+    background: transparent;
+    color: var(--accent-primary);
+    border-color: var(--accent-primary);
+}
+
+.secondary:hover {
+    background: var(--accent-primary);
+    color: white;
+}

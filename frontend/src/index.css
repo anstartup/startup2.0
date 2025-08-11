@@ -1,0 +1,57 @@
+/* --- Root Variables for Colors --- */
+:root {
+    /* Dark Mode Defaults */
+    --bg-primary: #0a0a0a;
+    --bg-secondary: #1a1a1a;
+    --bg-card: #2a2a2a;
+    --text-primary: #e0e0e0;
+    --text-secondary: #b0b0b0;
+    --accent-primary: #00d4ff;
+    --accent-secondary: #0099cc;
+    --border-color: rgba(0, 212, 255, 0.2);
+    --shadow-color: rgba(0, 212, 255, 0.1);
+}
+
+/* --- Polished Light Mode Overrides --- */
+.light-mode {
+    --bg-primary: #f8f9fa; /* Soft, off-white background */
+    --bg-secondary: #ffffff; /* Use pure white for floating elements */
+    --bg-card: #ffffff;
+    --text-primary: #212529; /* Dark gray for text, not pure black */
+    --text-secondary: #6c757d; /* Lighter gray for secondary text */
+    --accent-primary: #007bff; /* A professional, standard blue */
+    --accent-secondary: #0056b3;
+    --border-color: #dee2e6; /* Subtle light gray border */
+    --shadow-color: rgba(0, 0, 0, 0.05); /* Soft black shadow */
+}
+
+/* --- Base Styles --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height: 1.6;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    transition: background 0.4s ease, color 0.4s ease;
+}
+
+main {
+    margin-top: 80px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* --- Global Animations --- */
+@keyframes float {
+    0%, 100% { transform: translateY(0px); opacity: 1; }
+    50% { transform: translateY(-20px); opacity: 0.8; }
+}

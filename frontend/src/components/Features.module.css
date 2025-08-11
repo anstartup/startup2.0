@@ -1,0 +1,64 @@
+.features {
+    padding: 5rem 0;
+    /* In dark mode, use a distinct background to separate the section */
+    background: #111;
+    transition: background-color 0.4s ease;
+}
+
+.light.features {
+    /* In light mode, blend it with the primary page background for a clean look */
+    background: var(--bg-primary);
+}
+
+.title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 3rem;
+    color: var(--text-primary);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.card {
+    background: var(--bg-card);
+    padding: 2.5rem 2rem;
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.light .card {
+    /* Add a subtle shadow in light mode for a floating effect */
+    box-shadow: 0 4px 30px var(--shadow-color);
+}
+
+.card:hover {
+    transform: translateY(-8px);
+}
+
+.light .card:hover {
+    box-shadow: 0 10px 40px -5px var(--shadow-color);
+}
+
+.icon {
+    font-size: 3rem;
+    line-height: 1;
+    margin-bottom: 1rem;
+}
+
+.card h3 {
+    color: var(--accent-primary);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.card p {
+    color: var(--text-secondary);
+    line-height: 1.7;
+}

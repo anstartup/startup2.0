@@ -1,0 +1,111 @@
+.header {
+    /* Positioning and Floating Effect */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 0.75rem 0; /* Slightly reduced padding for a sleeker look */
+
+    /* Background and Transition */
+    background: rgba(10, 10, 10, 0.75);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-color);
+    transition: background 0.4s ease, border-color 0.4s ease;
+}
+
+.light.header {
+    background: rgba(248, 249, 250, 0.75); /* Using the light primary bg color */
+    box-shadow: 0 2px 10px var(--shadow-color);
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 56px; /* A standard header height */
+}
+
+.logo {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--accent-primary);
+}
+
+/* --- NEW Attractive Link Styles --- */
+.navLinks {
+    display: flex;
+    list-style: none;
+    gap: 0.5rem; /* Reduced gap for a tighter group */
+    margin: 0 auto;
+}
+
+.navLinks a {
+    color: var(--text-secondary); /* Start with secondary color for subtlety */
+    font-weight: 500;
+    padding: 0.5rem 1rem; /* Padding to create the pill shape */
+    border-radius: 999px; /* This creates the capsule shape */
+    transition: all 0.3s ease;
+}
+
+.navLinks a:hover {
+    color: var(--text-primary); /* Make text primary on hover */
+    background-color: var(--shadow-color); /* Use shadow color for a soft highlight */
+}
+
+/* --- End of New Styles --- */
+
+.authButtons {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.guestActions, .userActions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.welcomeMessage {
+    display: none; /* Hiding by default for a cleaner look, can be enabled for desktop */
+}
+
+.themeToggle {
+    background: transparent;
+    border: 2px solid var(--border-color);
+    color: var(--text-secondary);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    transition: all 0.3s ease-in-out;
+}
+
+.themeToggle:hover {
+    border-color: var(--accent-primary);
+    color: var(--accent-primary);
+    transform: rotate(180deg) scale(1.1);
+}
+
+/* --- Responsive Design --- */
+@media (min-width: 768px) {
+    .welcomeMessage {
+        display: block; /* Show welcome message on larger screens */
+        color: var(--text-secondary);
+        font-weight: 500;
+    }
+}
+
+@media (max-width: 768px) {
+    .navLinks {
+        display: none; /* Hide nav links on smaller screens */
+    }
+    .nav {
+        justify-content: space-between;
+    }
+}
