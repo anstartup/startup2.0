@@ -1,8 +1,8 @@
 import React, { useRef, useEffect, useState } from 'react';
-import Particles from './Particles';
-import Button from './Button';
-import useOnScreen from '../hooks/useOnScreen'; // Ensure this path is correct
-import { useTheme } from '../contexts/ThemeContext';
+import Particles from '../common/Particles';
+import Button from '../layout/Button';
+import useOnScreen from '../../hooks/useOnScreen'; // Ensure this path is correct
+import { useTheme } from '../../contexts/ThemeContext';
 import styles from './Hero.module.css';
 
 const StatItem = ({ finalValue, text }) => {

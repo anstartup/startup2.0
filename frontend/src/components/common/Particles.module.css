@@ -1,0 +1,26 @@
+.particle {
+    position: absolute;
+    background-color: var(--accent-primary);
+    border-radius: 50%;
+    opacity: 0.3;
+    animation: floatAndFade linear infinite;
+}
+
+/* Different sizes for particles */
+.particle:nth-child(3n+1) { width: 5px; height: 5px; }
+.particle:nth-child(3n+2) { width: 8px; height: 8px; }
+.particle:nth-child(3n+3) { width: 12px; height: 12px; }
+
+/* Animation for particles */
+@keyframes floatAndFade {
+    0% { transform: translateY(0) translateX(0) scale(1); opacity: 0.3; }
+    25% { transform: translateY(-20px) translateX(10px) scale(1.1); opacity: 0.4; }
+    50% { transform: translateY(-40px) translateX(-10px) scale(1.2); opacity: 0.5; }
+    75% { transform: translateY(-60px) translateX(10px) scale(1.1); opacity: 0.4; }
+    100% { transform: translateY(-80px) translateX(0) scale(1); opacity: 0.3; }
+}
+
+/* Light mode adjustments */
+.light .particle {
+    background-color: var(--accent-secondary);
+}

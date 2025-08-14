@@ -1,0 +1,122 @@
+.platformSection {
+    padding: 80px 0;
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    text-align: center;
+}
+
+.platformToggle {
+    margin-bottom: 50px;
+}
+
+.toggleButtons {
+    display: inline-flex;
+    background-color: var(--bg-card);
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+}
+
+.toggleBtn {
+    padding: 12px 25px;
+    border: none;
+    background-color: transparent;
+    color: var(--text-secondary);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: var(--font-body);
+    font-weight: 500;
+}
+
+.toggleBtn.active {
+    background-color: var(--accent-primary);
+    color: #ffffff;
+    box-shadow: 0 2px 10px rgba(0, 212, 255, 0.3);
+}
+
+.toggleBtn:hover:not(.active) {
+    color: var(--text-primary);
+}
+
+.platformGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 50px;
+    align-items: center;
+    text-align: left;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+    .platformGrid {
+        grid-template-columns: 1fr 1fr;
+    }
+    .platformGrid:nth-child(even) {
+        direction: rtl; /* Reverse order for even sections */
+    }
+    .platformGrid:nth-child(even) .platformText {
+        direction: ltr; /* Reset text direction */
+    }
+}
+
+.platformText h3 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: var(--text-primary);
+}
+
+.platformText p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+}
+
+.platformText ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 30px;
+}
+
+.platformText ul li {
+    font-size: 1rem;
+    color: var(--text-primary);
+    margin-bottom: 10px;
+    position: relative;
+    padding-left: 25px;
+}
+
+.platformText ul li::before {
+    content: '✅';
+    position: absolute;
+    left: 0;
+    color: var(--accent-primary);
+}
+
+.demoContainer {
+    background-color: var(--bg-card);
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 4px 20px var(--shadow-color);
+    border: 1px solid var(--border-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 300px; /* Ensure it has some height */
+}
+
+/* Light mode adjustments */
+.light .toggleButtons {
+    background-color: var(--bg-primary);
+}
+
+.light .toggleBtn {
+    color: var(--text-secondary);
+}
+
+.light .toggleBtn.active {
+    background-color: var(--accent-primary);
+    color: #ffffff;
+}

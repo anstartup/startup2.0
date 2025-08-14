@@ -1,0 +1,35 @@
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: var(--font-body);
+    font-weight: 500;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
+
+.primary {
+    background-color: var(--accent-primary);
+    color: #ffffff;
+}
+
+.primary:hover {
+    background-color: var(--accent-secondary);
+}
+
+.secondary {
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+}
+
+.secondary:hover {
+    background-color: var(--bg-card);
+}
+
+.light {
+    /* Light mode specific styles for buttons if needed */
+}

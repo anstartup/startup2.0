@@ -1,5 +1,5 @@
 import React from 'react';
-import { useTheme } from '../contexts/ThemeContext';
+import { useTheme } from '../../contexts/ThemeContext';
 import styles from './Button.module.css';
 
 const Button = ({ children, onClick, variant = 'primary', as = 'button', href, ...props }) => {

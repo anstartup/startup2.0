@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { useAuth } from '../contexts/AuthContext';
+import { useAuth } from '../../contexts/AuthContext';
 import styles from './Form.module.css'; // Import the same form styles
-import Button from './Button';         // Import the same reusable Button
+import Button from '../layout/Button';         // Import the same reusable Button
 
 const RecruiterSignupForm = ({ onClose }) => {
     const [formData, setFormData] = useState({

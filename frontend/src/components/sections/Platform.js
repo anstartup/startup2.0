@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { useTheme } from '../contexts/ThemeContext';
+import { useTheme } from '../../contexts/ThemeContext';
 import styles from './Platform.module.css';
-import Button from './Button';
-import ProfileCard from './ProfileCard'; // Import the new component
+import Button from '../layout/Button';
+import ProfileCard from '../common/ProfileCard'; // Import the new component
 
 const Platform = () => {
     const { theme } = useTheme();

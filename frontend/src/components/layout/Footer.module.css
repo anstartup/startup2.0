@@ -1,0 +1,85 @@
+.footer {
+    background-color: var(--bg-secondary);
+    color: var(--text-secondary);
+    padding: 40px 0;
+    font-family: var(--font-body);
+    border-top: 1px solid var(--border-color);
+}
+
+.footer .container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+}
+
+.about .logo {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    color: var(--accent-primary);
+    margin-bottom: 15px;
+}
+
+.about p {
+    font-size: 0.9rem;
+    line-height: 1.8;
+}
+
+.linksCol h4 {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    margin-bottom: 15px;
+}
+
+.linksCol ul {
+    list-style: none;
+    padding: 0;
+}
+
+.linksCol ul li {
+    margin-bottom: 10px;
+}
+
+.linksCol ul li a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.linksCol ul li a:hover {
+    color: var(--accent-primary);
+}
+
+.bottomBar {
+    border-top: 1px solid var(--border-color);
+    padding-top: 20px;
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+}
+
+.bottomLinks a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    margin-left: 20px;
+    transition: color 0.3s ease;
+}
+
+.bottomLinks a:hover {
+    color: var(--accent-primary);
+}
+
+/* Light mode adjustments */
+.light {
+    /* Add light mode specific styles here if needed */
+}

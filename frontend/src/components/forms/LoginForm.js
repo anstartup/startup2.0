@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { useAuth } from '../contexts/AuthContext';
+import { useAuth } from '../../contexts/AuthContext';
 import styles from './Form.module.css';
-import Button from './Button';
+import Button from '../layout/Button';
 
 const LoginForm = ({ onClose, onSwitchToRegister }) => {
     const [email, setEmail] = useState('');

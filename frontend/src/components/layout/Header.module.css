@@ -1,0 +1,83 @@
+.header {
+    background-color: var(--bg-secondary);
+    padding: 15px 0;
+    border-bottom: 1px solid var(--border-color);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px var(--shadow-color);
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    color: var(--accent-primary);
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.navLinks {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+.navLinks a {
+    color: var(--text-primary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.navLinks a:hover {
+    color: var(--accent-primary);
+}
+
+.authButtons {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.themeToggle {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.themeToggle:hover {
+    background-color: var(--bg-card);
+}
+
+.userActions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.welcomeMessage {
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+.guestActions {
+    display: flex;
+    gap: 15px;
+}
+
+/* Light mode adjustments */
+.light {
+    /* Add light mode specific styles here if needed */
+}
