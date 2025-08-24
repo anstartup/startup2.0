@@ -88,7 +88,6 @@ const Header = ({ onLoginClick, onSignupClick }) => {
                     ) : (
                         <div className={styles.guestActions}>
                             <Button onClick={onLoginClick} variant="secondary">Login</Button>
-                            <Button onClick={onSignupClick} variant="primary">Get Started</Button>
                         </div>
                     )}
                 </div>

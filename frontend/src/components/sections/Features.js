@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { useTheme } from '../../contexts/ThemeContext';
 import styles from './Features.module.css';
 
@@ -19,9 +20,15 @@ const itemVariants = {
     show: { y: 0, opacity: 1, transition: { duration: 0.6, ease: "easeOut" } },
 };
 
+
 const FeatureCard = ({ icon, title, text }) => {
     return (
-        <motion.div className={styles.card} variants={itemVariants}>
+        <motion.div
+            className={styles.card}
+            variants={itemVariants}
+            whileHover={{ scale: 1.04, rotateZ: 2, boxShadow: "0 8px 24px var(--shadow-color)" }}
+            whileTap={{ scale: 0.98, rotateZ: -2 }}
+        >
             <div className={styles.icon}>{icon}</div>
             <h3>{title}</h3>
             <p>{text}</p>

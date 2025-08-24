@@ -15,7 +15,6 @@ const StatItem = ({ finalValue, text }) => {
     useEffect(() => {
         // This effect now ONLY runs when isVisible becomes true
         if (isVisible) {
-            let start = 0;
             const end = parseInt(finalValue);
             const duration = 1500;
             const startTime = Date.now();
@@ -49,6 +48,17 @@ const heroVariants = {
     visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: 'easeOut' } },
 };
 
+
+const parallaxVariants = {
+    initial: { scale: 1, opacity: 0 },
+    animate: { scale: 1.03, opacity: 1, transition: { duration: 1, ease: 'easeOut' } },
+};
+
+const buttonTap = {
+    scale: 0.96,
+    boxShadow: "0 2px 8px var(--accent-primary)",
+};
+
 const Hero = ({ onStudentSignupClick, onRecruiterSignupClick }) => {
     const { theme } = useTheme();
     const themeClass = theme === 'light' ? styles.light : '';
@@ -61,7 +71,12 @@ const Hero = ({ onStudentSignupClick, onRecruiterSignupClick }) => {
             variants={heroVariants}
         >
             <Particles />
-            <div className={`container ${themeClass}`}>
+            <motion.div
+                className={`container ${themeClass}`}
+                variants={parallaxVariants}
+                initial="initial"
+                animate="animate"
+            >
                 <motion.h1 className={styles.title} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2, duration: 0.7 }}>Where Talent Meets Opportunity</motion.h1>
                 <motion.p className={styles.subtitle} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4, duration: 0.7 }}>Skip the resume. Show your skills. Get hired for what you can actually build.</motion.p>
 
@@ -72,10 +87,14 @@ const Hero = ({ onStudentSignupClick, onRecruiterSignupClick }) => {
                 </motion.div>
 
                 <motion.div className={styles.heroButtons} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.8, duration: 0.7 }}>
-                    <Button onClick={onStudentSignupClick} variant="primary">I'm a Student 🎓</Button>
-                    <Button onClick={onRecruiterSignupClick} variant="secondary">I'm Hiring 💼</Button>
+                    <motion.div whileTap={buttonTap} style={{ display: 'inline-block' }}>
+                        <Button onClick={onStudentSignupClick} variant="primary">I'm a Student 🎓</Button>
+                    </motion.div>
+                    <motion.div whileTap={buttonTap} style={{ display: 'inline-block' }}>
+                        <Button onClick={onRecruiterSignupClick} variant="secondary">I'm Hiring 💼</Button>
+                    </motion.div>
                 </motion.div>
-            </div>
+            </motion.div>
         </motion.section>
     );
 };

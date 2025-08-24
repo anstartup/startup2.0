@@ -107,6 +107,9 @@
 }
 
 /* Light mode adjustments */
+
 .light .card {
-    /* Light mode specific card styles */
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 15px var(--shadow-color);
 }

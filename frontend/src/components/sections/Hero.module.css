@@ -68,11 +68,15 @@
 }
 
 /* Light mode adjustments */
-.light .title,
-.light .subtitle {
-    /* Adjust text colors for light mode if needed */
-}
 
+.light .title {
+    color: var(--accent-primary);
+}
+.light .subtitle {
+    color: var(--accent-secondary);
+}
 .light .statItem {
-    /* Adjust stat item background/border for light mode */
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 15px var(--shadow-color);
 }
