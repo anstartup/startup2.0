@@ -1,20 +1,33 @@
-import React from 'react';
-import { useTheme } from '../../contexts/ThemeContext';
-import styles from './Button.module.css';
+import * as React from 'react';
 
-const Button = ({ children, onClick, variant = 'primary', as = 'button', href, ...props }) => {
-    const { theme } = useTheme();
-    const themeClass = theme === 'light' ? styles.light : '';
 
-    const classNames = `${styles.btn} ${styles[variant]} ${themeClass}`;
-    
-    const Tag = as;
+const baseStyles =
+    'inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary disabled:opacity-50 disabled:pointer-events-none';
 
-    return (
-        <Tag className={classNames} onClick={onClick} href={href} {...props}>
-            {children}
-        </Tag>
-    );
+const variants = {
+    primary: 'bg-primary text-white hover:bg-primary/90',
+    secondary: 'bg-secondary text-white hover:bg-secondary/90',
+    outline: 'border border-primary text-primary bg-transparent hover:bg-primary/10',
 };
+
+export function Button({
+    children,
+    onClick,
+    variant = 'primary',
+    type = 'button',
+    className = '',
+    ...props
+}) {
+    return (
+        <button
+            type={type}
+            onClick={onClick}
+            className={[baseStyles, variants[variant], className].filter(Boolean).join(' ')}
+            {...props}
+        >
+            {children}
+        </button>
+    );
+}
 
 export default Button;

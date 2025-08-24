@@ -1,4 +1,6 @@
+
 import React, { useRef, useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
 import Particles from '../common/Particles';
 import Button from '../layout/Button';
 import useOnScreen from '../../hooks/useOnScreen'; // Ensure this path is correct
@@ -41,29 +43,40 @@ const StatItem = ({ finalValue, text }) => {
     );
 };
 
+
+const heroVariants = {
+    hidden: { opacity: 0, y: 40 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: 'easeOut' } },
+};
+
 const Hero = ({ onStudentSignupClick, onRecruiterSignupClick }) => {
     const { theme } = useTheme();
     const themeClass = theme === 'light' ? styles.light : '';
 
     return (
-        <section className={`${styles.hero} ${themeClass}`}>
+        <motion.section
+            className={`${styles.hero} ${themeClass}`}
+            initial="hidden"
+            animate="visible"
+            variants={heroVariants}
+        >
             <Particles />
             <div className={`container ${themeClass}`}>
-                <h1 className={styles.title}>Where Talent Meets Opportunity</h1>
-                <p className={styles.subtitle}>Skip the resume. Show your skills. Get hired for what you can actually build.</p>
+                <motion.h1 className={styles.title} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2, duration: 0.7 }}>Where Talent Meets Opportunity</motion.h1>
+                <motion.p className={styles.subtitle} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4, duration: 0.7 }}>Skip the resume. Show your skills. Get hired for what you can actually build.</motion.p>
 
-                <div className={`${styles.stats} ${themeClass}`}>
+                <motion.div className={`${styles.stats} ${themeClass}`} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.6, duration: 0.7 }}>
                     <StatItem finalValue="43" text="Skilled Students" />
                     <StatItem finalValue="8" text="Active Startups" />
                     <StatItem finalValue="20" text="Successful Matches" />
-                </div>
+                </motion.div>
 
-                <div className={styles.heroButtons}>
+                <motion.div className={styles.heroButtons} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.8, duration: 0.7 }}>
                     <Button onClick={onStudentSignupClick} variant="primary">I'm a Student 🎓</Button>
                     <Button onClick={onRecruiterSignupClick} variant="secondary">I'm Hiring 💼</Button>
-                </div>
+                </motion.div>
             </div>
-        </section>
+        </motion.section>
     );
 };
 

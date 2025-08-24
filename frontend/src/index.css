@@ -1,5 +1,8 @@
-/* --- 1. Import Google Fonts --- */
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 /* --- 2. Root Variables for Colors & Typography --- */
 :root {
@@ -75,4 +78,36 @@ main {
 @keyframes float {
     0%, 100% { transform: translateY(0px); opacity: 1; }
     50% { transform: translateY(-20px); opacity: 0.8; }
+}
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 900px) {
+    h1 { font-size: 2.2rem; }
+    h2 { font-size: 1.5rem; }
+    h3 { font-size: 1.1rem; }
+    h4 { font-size: 1rem; }
+    .container {
+        max-width: 98vw;
+        padding: 0 8px;
+    }
+    main {
+        margin-top: 60px;
+    }
+}
+
+@media (max-width: 600px) {
+    h1 { font-size: 1.5rem; }
+    h2 { font-size: 1.1rem; }
+    h3 { font-size: 1rem; }
+    h4 { font-size: 0.95rem; }
+    .container {
+        max-width: 100vw;
+        padding: 0 4px;
+    }
+    main {
+        margin-top: 48px;
+    }
+    body {
+        font-size: 0.97rem;
+    }
 }

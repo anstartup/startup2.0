@@ -1,6 +1,7 @@
 import React from 'react';
 import { AuthProvider } from './contexts/AuthContext';
 import { useModal } from './contexts/ModalContext';
+import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 
 import Header from './components/layout/Header';
 import Hero from './components/sections/Hero';
@@ -12,6 +13,8 @@ import LoginForm from './components/forms/LoginForm';
 import StudentSignupForm from './components/forms/StudentSignupForm';
 import RecruiterSignupForm from './components/forms/RecruiterSignupForm';
 import Button from './components/layout/Button';
+import Profile from './components/pages/Profile';
+import Settings from './components/pages/Settings';
 import styles from './components/forms/Form.module.css';
 
 const SignupChoice = ({ switchToModal }) => (
@@ -31,40 +34,54 @@ const SignupChoice = ({ switchToModal }) => (
     </div>
 );
 
-function App() {
+function MainApp() {
     const { activeModal, openModal, closeModal, switchToModal } = useModal();
-
     return (
-        <AuthProvider>
+        <>
             <Header 
                 onLoginClick={() => openModal('login')} 
                 onSignupClick={() => openModal('signupChoice')}
             />
-            <main>
-                <Hero 
-                    onStudentSignupClick={() => openModal('studentSignup')}
-                    onRecruiterSignupClick={() => openModal('recruiterSignup')}
-                />
-                <Features />
-                <Platform />
+            <main style={{ minHeight: 'calc(100vh - 120px)', width: '100%' }}>
+                <Routes>
+                    <Route path="/" element={
+                        <>
+                            <Hero 
+                                onStudentSignupClick={() => openModal('studentSignup')}
+                                onRecruiterSignupClick={() => openModal('recruiterSignup')}
+                            />
+                            <Features />
+                            <Platform />
+                        </>
+                    } />
+                    <Route path="/profile" element={<Profile />} />
+                    <Route path="/settings" element={<Settings />} />
+                </Routes>
             </main>
             <Footer />
 
             <Modal isOpen={activeModal === 'login'} onClose={closeModal}>
                 <LoginForm onClose={closeModal} onSwitchToRegister={() => switchToModal('signupChoice')} />
             </Modal>
-            
             <Modal isOpen={activeModal === 'signupChoice'} onClose={closeModal}>
                 <SignupChoice switchToModal={switchToModal} />
             </Modal>
-
             <Modal isOpen={activeModal === 'studentSignup'} onClose={closeModal}>
                 <StudentSignupForm onClose={closeModal} />
             </Modal>
-
             <Modal isOpen={activeModal === 'recruiterSignup'} onClose={closeModal}>
                 <RecruiterSignupForm onClose={closeModal} />
             </Modal>
+        </>
+    );
+}
+
+function App() {
+    return (
+        <AuthProvider>
+            <Router>
+                <MainApp />
+            </Router>
         </AuthProvider>
     );
 }

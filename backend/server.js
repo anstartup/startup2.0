@@ -39,15 +39,22 @@ io.on('connection', (socket) => {
 });
 
 // --- API Routes ---
+
 const authRoutes = require('./routes/auth');
 const notificationRoutes = require('./routes/notifications');
 const statsRoutes = require('./routes/stats');
 const jobRoutes = require('./routes/jobs')(io); // Pass the `io` instance to the routes
+const endorsementsRoutes = require('./routes/endorsements');
+const collaborationRoutes = require('./routes/collaboration');
+const skillsRoutes = require('./routes/skills');
 
 app.use('/api/auth', authRoutes);
 app.use('/api/notifications', notificationRoutes);
 app.use('/api/stats', statsRoutes);
 app.use('/api/jobs', jobRoutes);
+app.use('/api/endorsements', endorsementsRoutes);
+app.use('/api/collaboration', collaborationRoutes);
+app.use('/api/skills', skillsRoutes);
 
 // --- Start Server ---
 const PORT = process.env.PORT || 5000;

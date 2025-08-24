@@ -68,6 +68,44 @@
     font-size: 0.85rem;
 }
 
+@media (max-width: 900px) {
+    .footer {
+        padding: 25px 0;
+    }
+    .grid {
+        gap: 18px;
+    }
+    .bottomBar {
+        flex-direction: column;
+        gap: 10px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .footer {
+        padding: 12px 0;
+    }
+    .container {
+        gap: 12px;
+    }
+    .grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+    .bottomBar {
+        flex-direction: column;
+        gap: 6px;
+        font-size: 0.95rem;
+        padding-top: 10px;
+        margin-top: 10px;
+    }
+    .bottomLinks a {
+        margin-left: 10px;
+        font-size: 0.95rem;
+    }
+}
+
 .bottomLinks a {
     color: var(--text-secondary);
     text-decoration: none;
