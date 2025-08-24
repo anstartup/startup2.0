@@ -42,11 +42,13 @@ io.on('connection', (socket) => {
 const authRoutes = require('./routes/auth');
 const notificationRoutes = require('./routes/notifications');
 const statsRoutes = require('./routes/stats');
+const dashboardRoutes = require('./routes/dashboard');
 const jobRoutes = require('./routes/jobs')(io); // Pass the `io` instance to the routes
 
 app.use('/api/auth', authRoutes);
 app.use('/api/notifications', notificationRoutes);
 app.use('/api/stats', statsRoutes);
+app.use('/api/dashboard', dashboardRoutes);
 app.use('/api/jobs', jobRoutes);
 
 // --- Start Server ---

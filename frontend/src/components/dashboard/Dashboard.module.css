@@ -1,0 +1,850 @@
+/* Dashboard Container */
+.dashboard {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    background: var(--background-primary, #ffffff);
+    min-height: 100vh;
+}
+
+/* Header */
+.header {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color, #e5e7eb);
+}
+
+.header h1 {
+    margin: 0 0 0.5rem 0;
+    color: var(--text-primary, #1f2937);
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.header p {
+    margin: 0;
+    color: var(--text-secondary, #6b7280);
+    font-size: 1.1rem;
+}
+
+/* Tabs */
+.tabs {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--border-color, #e5e7eb);
+}
+
+.tab {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    background: transparent;
+    color: var(--text-secondary, #6b7280);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s ease;
+    font-weight: 500;
+}
+
+.tab:hover {
+    color: var(--primary-color, #3b82f6);
+    background: var(--background-secondary, #f8fafc);
+}
+
+.tab.active {
+    color: var(--primary-color, #3b82f6);
+    border-bottom-color: var(--primary-color, #3b82f6);
+}
+
+/* Content Areas */
+.content {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Overview Section */
+.overview {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.statsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.statCard {
+    background: var(--background-secondary, #f8fafc);
+    border: 1px solid var(--border-color, #e5e7eb);
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.statCard:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.statCard h3 {
+    margin: 0 0 1rem 0;
+    color: var(--text-secondary, #6b7280);
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.statNumber {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--primary-color, #3b82f6);
+    margin-bottom: 0.5rem;
+}
+
+.statCard p {
+    margin: 0;
+    color: var(--text-secondary, #6b7280);
+    font-size: 0.9rem;
+}
+
+/* Progress Bar */
+.progressContainer {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.progressBar {
+    flex: 1;
+    height: 8px;
+    background: var(--border-color, #e5e7eb);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progressFill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-color, #3b82f6), var(--secondary-color, #10b981));
+    transition: width 0.3s ease;
+}
+
+.percentage {
+    font-weight: 600;
+    color: var(--primary-color, #3b82f6);
+}
+
+.suggestion {
+    margin-top: 0.5rem;
+    font-size: 0.8rem;
+    color: var(--warning-color, #f59e0b);
+}
+
+/* Activity and Notifications */
+.recentActivity {
+    background: var(--background-secondary, #f8fafc);
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+.recentActivity h3 {
+    margin: 0 0 1rem 0;
+    color: var(--text-primary, #1f2937);
+}
+
+.notificationList {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.notification {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem;
+    background: white;
+    border-radius: 8px;
+    border-left: 4px solid var(--primary-color, #3b82f6);
+}
+
+.notificationText {
+    color: var(--text-primary, #1f2937);
+}
+
+.notificationTime {
+    color: var(--text-secondary, #6b7280);
+    font-size: 0.8rem;
+}
+
+/* Quick Actions */
+.quickActions {
+    background: var(--background-secondary, #f8fafc);
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+.quickActions h3 {
+    margin: 0 0 1rem 0;
+    color: var(--text-primary, #1f2937);
+}
+
+.actionGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+}
+
+.actionButton {
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--primary-color, #3b82f6);
+    background: transparent;
+    color: var(--primary-color, #3b82f6);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: 500;
+}
+
+.actionButton:hover {
+    background: var(--primary-color, #3b82f6);
+    color: white;
+}
+
+/* Job Matches */
+.matches {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.matchGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 1.5rem;
+}
+
+.matchCard {
+    background: white;
+    border: 1px solid var(--border-color, #e5e7eb);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.matchCard:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.matchHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    margin-bottom: 1rem;
+}
+
+.matchHeader h4 {
+    margin: 0;
+    color: var(--text-primary, #1f2937);
+    font-size: 1.2rem;
+}
+
+.matchScore {
+    background: var(--success-color, #10b981);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.company {
+    margin: 0 0 1rem 0;
+    color: var(--text-secondary, #6b7280);
+    font-weight: 500;
+}
+
+.matchDetails {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.budget, .duration {
+    background: var(--background-secondary, #f8fafc);
+    padding: 0.25rem 0.5rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    color: var(--text-primary, #1f2937);
+}
+
+.skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.skill {
+    background: var(--primary-color, #3b82f6);
+    color: white;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.applyButton {
+    width: 100%;
+    padding: 0.75rem;
+    background: var(--primary-color, #3b82f6);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.2s ease;
+}
+
+.applyButton:hover {
+    background: var(--primary-dark, #2563eb);
+}
+
+/* Profile Section */
+.profile {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.profileCard {
+    background: white;
+    border: 1px solid var(--border-color, #e5e7eb);
+    border-radius: 12px;
+    padding: 2rem;
+}
+
+.profileInfo h4 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.5rem;
+    color: var(--text-primary, #1f2937);
+}
+
+.anonymousId {
+    margin: 0 0 1rem 0;
+    color: var(--text-secondary, #6b7280);
+    font-size: 0.9rem;
+    font-family: monospace;
+    background: var(--background-secondary, #f8fafc);
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+.bio {
+    margin: 0 0 1rem 0;
+    color: var(--text-primary, #1f2937);
+    line-height: 1.6;
+}
+
+.profileLinks a {
+    color: var(--primary-color, #3b82f6);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.profileLinks a:hover {
+    text-decoration: underline;
+}
+
+.skillTags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.editButton {
+    margin-top: 1.5rem;
+    padding: 0.75rem 2rem;
+    background: var(--primary-color, #3b82f6);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+/* Analytics Section */
+.analytics {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.analyticsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.skillDemand, .recommendations, .skillAnalytics, .hiringMetrics {
+    background: white;
+    border: 1px solid var(--border-color, #e5e7eb);
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+.skillDemand h4, .recommendations h4, .skillAnalytics h4, .hiringMetrics h4 {
+    margin: 0 0 1rem 0;
+    color: var(--text-primary, #1f2937);
+}
+
+.skillDemandItem, .skillAnalyticsItem {
+    display: grid;
+    grid-template-columns: 1fr 2fr auto;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.75rem;
+}
+
+.skillName {
+    font-weight: 500;
+    color: var(--text-primary, #1f2937);
+}
+
+.demandBar, .skillBar {
+    height: 8px;
+    background: var(--border-color, #e5e7eb);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.demandFill, .skillFill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-color, #3b82f6), var(--secondary-color, #10b981));
+    transition: width 0.3s ease;
+}
+
+.demandCount, .skillCount {
+    font-size: 0.8rem;
+    color: var(--text-secondary, #6b7280);
+}
+
+.recommendations ul {
+    margin: 0.5rem 0;
+    padding-left: 1.5rem;
+}
+
+.recommendations li {
+    margin-bottom: 0.5rem;
+    color: var(--text-primary, #1f2937);
+}
+
+/* Recruiter Specific Styles */
+.sectionHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.sectionHeader h3 {
+    margin: 0;
+    color: var(--text-primary, #1f2937);
+}
+
+.primaryButton {
+    padding: 0.75rem 1.5rem;
+    background: var(--primary-color, #3b82f6);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.2s ease;
+}
+
+.primaryButton:hover {
+    background: var(--primary-dark, #2563eb);
+}
+
+.jobGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 1.5rem;
+}
+
+.jobCard {
+    background: white;
+    border: 1px solid var(--border-color, #e5e7eb);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.jobCard:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.jobHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    margin-bottom: 1rem;
+}
+
+.jobHeader h4 {
+    margin: 0;
+    color: var(--text-primary, #1f2937);
+    font-size: 1.2rem;
+}
+
+.jobStatus {
+    background: var(--success-color, #10b981);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.jobDescription {
+    margin: 0 0 1rem 0;
+    color: var(--text-primary, #1f2937);
+    line-height: 1.5;
+}
+
+.jobDetails {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.budget, .duration, .matches {
+    background: var(--background-secondary, #f8fafc);
+    padding: 0.25rem 0.5rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    color: var(--text-primary, #1f2937);
+}
+
+.skillMore {
+    background: var(--text-secondary, #6b7280);
+    color: white;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+}
+
+.jobActions {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+.editButton, .viewButton {
+    flex: 1;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--primary-color, #3b82f6);
+    background: transparent;
+    color: var(--primary-color, #3b82f6);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: 500;
+}
+
+.editButton:hover, .viewButton:hover {
+    background: var(--primary-color, #3b82f6);
+    color: white;
+}
+
+/* Job Summary for Overview */
+.recentJobs {
+    background: var(--background-secondary, #f8fafc);
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+.recentJobs h3 {
+    margin: 0 0 1rem 0;
+    color: var(--text-primary, #1f2937);
+}
+
+.jobSummary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: white;
+    border-radius: 8px;
+    margin-bottom: 0.75rem;
+    border: 1px solid var(--border-color, #e5e7eb);
+}
+
+.jobInfo h4 {
+    margin: 0 0 0.25rem 0;
+    color: var(--text-primary, #1f2937);
+}
+
+.jobInfo p {
+    margin: 0;
+    color: var(--text-secondary, #6b7280);
+    font-size: 0.9rem;
+}
+
+.jobStats {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.matchCount {
+    color: var(--text-secondary, #6b7280);
+    font-size: 0.9rem;
+}
+
+/* Candidates Section */
+.candidates {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.jobFilter {
+    background: var(--background-secondary, #f8fafc);
+    padding: 1rem;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.jobFilter h4 {
+    margin: 0;
+    color: var(--text-primary, #1f2937);
+}
+
+.clearFilter {
+    padding: 0.5rem 1rem;
+    background: transparent;
+    border: 1px solid var(--border-color, #e5e7eb);
+    border-radius: 6px;
+    cursor: pointer;
+    color: var(--text-secondary, #6b7280);
+}
+
+.candidateGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.candidateCard {
+    background: white;
+    border: 1px solid var(--border-color, #e5e7eb);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.candidateCard:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.candidateHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    margin-bottom: 1rem;
+}
+
+.candidateHeader h4 {
+    margin: 0;
+    color: var(--text-primary, #1f2937);
+    font-size: 1.1rem;
+}
+
+.candidateBio {
+    margin: 0 0 1rem 0;
+    color: var(--text-primary, #1f2937);
+    line-height: 1.5;
+    font-size: 0.9rem;
+}
+
+.candidateSkills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.jobContext {
+    margin-bottom: 1rem;
+    padding: 0.75rem;
+    background: var(--background-secondary, #f8fafc);
+    border-radius: 6px;
+}
+
+.jobTitle {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--text-secondary, #6b7280);
+}
+
+.candidateActions {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.contactButton, .saveButton {
+    flex: 1;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--primary-color, #3b82f6);
+    background: var(--primary-color, #3b82f6);
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: 500;
+}
+
+.saveButton {
+    background: transparent;
+    color: var(--primary-color, #3b82f6);
+}
+
+.contactButton:hover {
+    background: var(--primary-dark, #2563eb);
+}
+
+.saveButton:hover {
+    background: var(--primary-color, #3b82f6);
+    color: white;
+}
+
+/* Metrics */
+.metricsList {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.metric {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.75rem;
+    background: var(--background-secondary, #f8fafc);
+    border-radius: 6px;
+}
+
+.metricLabel {
+    color: var(--text-secondary, #6b7280);
+    font-weight: 500;
+}
+
+.metricValue {
+    color: var(--text-primary, #1f2937);
+    font-weight: 600;
+}
+
+.tipsList {
+    margin: 0.5rem 0;
+    padding-left: 1.5rem;
+}
+
+.tipsList li {
+    margin-bottom: 0.5rem;
+    color: var(--text-primary, #1f2937);
+    line-height: 1.5;
+}
+
+/* Empty States */
+.noMatches, .noJobs, .noCandidates {
+    text-align: center;
+    padding: 3rem;
+    color: var(--text-secondary, #6b7280);
+}
+
+.noMatches p, .noJobs p, .noCandidates p {
+    margin: 0 0 1rem 0;
+    font-size: 1.1rem;
+}
+
+/* Loading and Error States */
+.loading, .error {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+    font-size: 1.2rem;
+    color: var(--text-secondary, #6b7280);
+}
+
+.error {
+    color: var(--error-color, #ef4444);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .dashboard {
+        padding: 1rem;
+    }
+    
+    .tabs {
+        flex-wrap: wrap;
+        gap: 0.25rem;
+    }
+    
+    .tab {
+        flex: 1;
+        min-width: 120px;
+        padding: 0.5rem 0.75rem;
+        font-size: 0.9rem;
+    }
+    
+    .statsGrid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+    }
+    
+    .matchGrid, .jobGrid, .candidateGrid {
+        grid-template-columns: 1fr;
+    }
+    
+    .analyticsGrid {
+        grid-template-columns: 1fr;
+    }
+    
+    .jobSummary {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: stretch;
+    }
+    
+    .jobStats {
+        justify-content: space-between;
+    }
+    
+    .matchHeader, .candidateHeader, .jobHeader {
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: stretch;
+    }
+    
+    .matchScore, .jobStatus {
+        align-self: flex-start;
+    }
+}
