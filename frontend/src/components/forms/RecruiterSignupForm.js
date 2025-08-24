@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
+import { useNavigate } from 'react-router-dom';
 import styles from './Form.module.css'; // Import the same form styles
 import Button from '../layout/Button';         // Import the same reusable Button
 
@@ -14,6 +15,7 @@ const RecruiterSignupForm = ({ onClose }) => {
     });
     const [error, setError] = useState('');
     const { signup } = useAuth();
+    const navigate = useNavigate();
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -25,6 +27,7 @@ const RecruiterSignupForm = ({ onClose }) => {
         try {
             await signup(formData, 'recruiter');
             onClose();
+            navigate('/dashboard'); // Redirect to dashboard after successful signup
         } catch (err) {
             setError(err.response?.data?.message || 'Signup failed. Please try again.');
         }

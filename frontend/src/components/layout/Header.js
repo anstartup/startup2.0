@@ -1,27 +1,46 @@
 import React from 'react';
 import { useTheme } from '../../contexts/ThemeContext';
 import { useAuth } from '../../contexts/AuthContext';
-import styles from './Header.module.css'; // We will create this CSS module next
+import { Link, useLocation } from 'react-router-dom';
+import styles from './Header.module.css';
 import Button from './Button'; 
 
 const Header = ({ onLoginClick, onSignupClick }) => {
     const { theme, toggleTheme } = useTheme();
     const { user, logout } = useAuth();
+    const location = useLocation();
     
     // This class will be added to the header to trigger light-mode styles from the CSS module
     const themeClass = theme === 'light' ? styles.light : '';
+    
+    // Check if we're on the landing page
+    const isLandingPage = location.pathname === '/';
 
     return (
         <header className={`${styles.header} ${themeClass}`}>
             <nav className={`container ${styles.nav}`}>
-                <a href="#home" className={styles.logo}>
+                <Link to={user ? '/dashboard' : '/'} className={styles.logo}>
                     Skillexer
-                </a>
+                </Link>
 
                 {/* Navigation links that will be hidden on smaller screens */}
                 <ul className={styles.navLinks}>
-                    <li><a href="#features">Features</a></li>
-                    <li><a href="#platform">Platform</a></li>
+                    {isLandingPage ? (
+                        <>
+                            <li><a href="#features">Features</a></li>
+                            <li><a href="#platform">Platform</a></li>
+                        </>
+                    ) : user ? (
+                        <>
+                            <li><Link to="/dashboard">Dashboard</Link></li>
+                            {user.type === 'student' && (
+                                <li><Link to="/dashboard/profile">Profile</Link></li>
+                            )}
+                            {user.type === 'recruiter' && (
+                                <li><Link to="/dashboard/jobs">Job Postings</Link></li>
+                            )}
+                        </>
+                    ) : null}
                 </ul>
 
                 <div className={styles.authButtons}>
@@ -32,6 +51,11 @@ const Header = ({ onLoginClick, onSignupClick }) => {
                     {user ? (
                         <div className={styles.userActions}>
                             <span className={styles.welcomeMessage}>Welcome, {user.name}!</span>
+                            <Link to="/dashboard" className={styles.dashboardLink}>
+                                <Button variant="primary">
+                                    {location.pathname.includes('/dashboard') ? 'Dashboard' : 'Go to Dashboard'}
+                                </Button>
+                            </Link>
                             <Button onClick={logout} variant="secondary">Logout</Button>
                         </div>
                     ) : (

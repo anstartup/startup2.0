@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
+import { useNavigate } from 'react-router-dom';
 import styles from './Form.module.css';
 import Button from '../layout/Button';
 
@@ -8,6 +9,7 @@ const LoginForm = ({ onClose, onSwitchToRegister }) => {
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const { login } = useAuth();
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -15,6 +17,7 @@ const LoginForm = ({ onClose, onSwitchToRegister }) => {
         try {
             await login({ email, password });
             onClose();
+            navigate('/dashboard'); // Redirect to dashboard after successful login
         } catch (err) {
             setError(err.response?.data?.message || 'Login failed. Please try again.');
         }
