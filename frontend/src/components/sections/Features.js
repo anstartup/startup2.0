@@ -1,7 +1,7 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { useTheme } from '../../contexts/ThemeContext';
 import styles from './Features.module.css';
-import { motion } from 'framer-motion';
 
 // Animation for the grid container
 const containerVariants = {
@@ -20,9 +20,15 @@ const itemVariants = {
     show: { y: 0, opacity: 1, transition: { duration: 0.6, ease: "easeOut" } },
 };
 
+
 const FeatureCard = ({ icon, title, text }) => {
     return (
-        <motion.div className={styles.card} variants={itemVariants}>
+        <motion.div
+            className={styles.card}
+            variants={itemVariants}
+            whileHover={{ scale: 1.04, rotateZ: 2, boxShadow: "0 8px 24px var(--shadow-color)" }}
+            whileTap={{ scale: 0.98, rotateZ: -2 }}
+        >
             <div className={styles.icon}>{icon}</div>
             <h3>{title}</h3>
             <p>{text}</p>
@@ -30,40 +36,53 @@ const FeatureCard = ({ icon, title, text }) => {
     );
 };
 
+
 const Features = () => {
     const { theme } = useTheme();
     const themeClass = theme === 'light' ? styles.light : '';
 
     return (
-        <section className={`${styles.features} ${themeClass}`} id="features">
+        <motion.section
+            className={`${styles.features} ${themeClass}`}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: 'easeOut' }}
+            viewport={{ once: true, amount: 0.2 }}
+            id="features"
+        >
             <div className="container">
-                <h2 className={styles.title}>Why Skillexer Works</h2>
-                
-                <motion.div 
+                <motion.h2
+                    className={styles.title}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2, duration: 0.7 }}
+                    viewport={{ once: true }}
+                >Why Skillexer Works</motion.h2>
+                <motion.div
                     className={styles.grid}
                     variants={containerVariants}
                     initial="hidden"
-                    whileInView="show" // This triggers the animation when the section scrolls into view
-                    viewport={{ once: true, amount: 0.2 }} // Ensures the animation only runs once
+                    whileInView="show"
+                    viewport={{ once: true, amount: 0.2 }}
                 >
-                    <FeatureCard 
-                        icon="🚀" 
-                        title="No Resume Required" 
+                    <FeatureCard
+                        icon="🚀"
+                        title="No Resume Required"
                         text="Your GitHub, projects, and actual work speak louder than any CV. Show what you've built, not just what you've studied."
                     />
-                    <FeatureCard 
-                        icon="🤖" 
-                        title="AI-Powered Matching" 
+                    <FeatureCard
+                        icon="🤖"
+                        title="AI-Powered Matching"
                         text="Our AI analyzes your repositories and projects to understand your real skills and match you with perfect opportunities."
                     />
-                    <FeatureCard 
-                        icon="👤" 
-                        title="Anonymous First" 
+                    <FeatureCard
+                        icon="👤"
+                        title="Anonymous First"
                         text="No bias based on college, name, or background. Recruiters see your skills first, identity later."
                     />
                 </motion.div>
             </div>
-        </section>
+        </motion.section>
     );
 };
 

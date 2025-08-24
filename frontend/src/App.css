@@ -1,0 +1,30 @@
+/* App-wide layout and mobile fixes */
+
+.appRoot {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	background: var(--bg-primary);
+}
+
+.mainContent {
+	flex: 1;
+	padding-top: 80px;
+}
+
+@media (max-width: 900px) {
+	.mainContent {
+		padding-top: 60px;
+	}
+}
+
+@media (max-width: 600px) {
+	.mainContent {
+		padding-top: 48px;
+		padding-left: 0;
+		padding-right: 0;
+	}
+	.appRoot {
+		font-size: 0.97rem;
+	}
+}

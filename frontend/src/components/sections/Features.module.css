@@ -50,7 +50,66 @@
     color: var(--text-secondary);
 }
 
+@media (max-width: 900px) {
+    .features {
+        padding: 40px 0;
+    }
+    .title {
+        font-size: 1.5rem;
+        margin-bottom: 30px;
+    }
+    .grid {
+        gap: 18px;
+    }
+    .card {
+        padding: 18px;
+    }
+    .icon {
+        font-size: 2.2rem;
+        margin-bottom: 12px;
+    }
+    .card h3 {
+        font-size: 1.1rem;
+        margin-bottom: 10px;
+    }
+    .card p {
+        font-size: 0.97rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .features {
+        padding: 10px 0;
+    }
+    .title {
+        font-size: 1.1rem;
+        margin-bottom: 18px;
+    }
+    .grid {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+    .card {
+        padding: 10px;
+        font-size: 0.97rem;
+    }
+    .icon {
+        font-size: 1.5rem;
+        margin-bottom: 8px;
+    }
+    .card h3 {
+        font-size: 1rem;
+        margin-bottom: 6px;
+    }
+    .card p {
+        font-size: 0.95rem;
+    }
+}
+
 /* Light mode adjustments */
+
 .light .card {
-    /* Light mode specific card styles */
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 15px var(--shadow-color);
 }
