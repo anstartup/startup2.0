@@ -7,21 +7,21 @@ const Collaboration = () => {
   const handleDecline = () => alert('Declined collaboration request!');
 
   return (
-    <section className="bg-white dark:bg-zinc-800 rounded-xl shadow p-6">
+    <section className="rounded-xl p-6" style={{ background: 'var(--bg-secondary)', border: '1px solid var(--border-color)' }}>
       <h3 className="font-semibold text-lg mb-4">Collaboration Requests</h3>
       {collabRequests.length === 0 ? (
-        <div className="text-zinc-500">No collaboration requests yet.</div>
+        <div style={{ color: 'var(--text-secondary)' }}>No collaboration requests yet.</div>
       ) : collabRequests.map((req, i) => {
         const from = req.data?.from || 'Someone';
         const project = req.data?.project ? ` · ${req.data.project}` : '';
         return (
-          <div key={i} className="mb-4 p-3 rounded-lg bg-primary/5">
-            <strong className="text-primary">{req.title || 'Collaboration Request'}</strong><br/>
-            <span className="text-sm text-zinc-600 dark:text-zinc-300">From {from}{project}</span>
-            <p className="mt-1 text-zinc-700 dark:text-zinc-200">{req.message}</p>
+          <div key={i} className="mb-4 p-3 rounded-lg" style={{ background: 'color-mix(in oklab, var(--accent-primary) 10%, transparent)' }}>
+            <strong style={{ color: 'var(--accent-primary)' }}>{req.title || 'Collaboration Request'}</strong><br/>
+            <span className="text-sm" style={{ color: 'var(--text-secondary)' }}>From {from}{project}</span>
+            <p className="mt-1" style={{ color: 'var(--text-primary)' }}>{req.message}</p>
             <div className="flex gap-2 mt-2">
               <button className="px-3 py-1 rounded bg-primary text-white hover:bg-primary/90" onClick={handleAccept}>Accept</button>
-              <button className="px-3 py-1 rounded bg-zinc-200 dark:bg-zinc-700 text-zinc-900 dark:text-white hover:bg-zinc-300 dark:hover:bg-zinc-600" onClick={handleDecline}>Decline</button>
+              <button className="px-3 py-1 rounded bg-transparent" style={{ background: 'var(--bg-card)', color: 'var(--text-primary)', border: '1px solid var(--border-color)' }} onClick={handleDecline}>Decline</button>
             </div>
           </div>
         );
