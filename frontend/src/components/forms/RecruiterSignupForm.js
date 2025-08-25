@@ -27,7 +27,8 @@ const RecruiterSignupForm = ({ onClose }) => {
         try {
             await signup(formData, 'recruiter');
             onClose();
-            navigate('/dashboard'); // Redirect to dashboard after successful signup
+            // Redirect to settings where recruiters can configure company details
+            navigate('/settings');
         } catch (err) {
             setError(err.response?.data?.message || 'Signup failed. Please try again.');
         }

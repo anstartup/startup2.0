@@ -1,56 +1,17 @@
-@media (prefers-color-scheme: dark) {
-    .platformSection,
-    .platformSection h3,
-    .platformSection p,
-    .platformSection ul,
-    .platformSection ul li {
-        color: #fff !important;
-    }
+/* Platform section – clean, valid CSS with theme-aware colors */
+
+.platformSection {
+    padding: 80px 0;
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    text-align: center;
 }
-/* Highest specificity for inactive toggle button in light mode */
-.light .toggleBtn:not(.active) {
-    color: #000 !important;
-}
+
 .toggleIndicator {
     pointer-events: none;
     box-shadow: 0 2px 10px rgba(0, 212, 255, 0.3);
     transition: background 0.3s;
-    z-index: 0;
-}
-.platformSection {
-    padding: 80px 0;
-        background-color: var(--bg-secondary);
-        color: #222;
-/* Ensure all text is correct color in both modes */
-.platformSection h3,
-.platformSection p,
-.platformSection ul,
-.platformSection ul li {
-    color: #222;
-}
-
-@media (prefers-color-scheme: dark) {
-    .platformSection,
-    .platformSection h3,
-    .platformSection p,
-    .platformSection ul,
-    .platformSection ul li {
-        color: #fff !important;
-    }
-}
-
-@media (prefers-color-scheme: dark) {
-    .platformSection {
-        color: #fff !important;
-    }
-}
-
-@media (prefers-color-scheme: dark) {
-    .toggleBtn:hover:not(.active) {
-        color: #fff !important;
-    }
-}
-    text-align: center;
+    z-index: 1; /* below buttons (z-index:2) but above container */
 }
 
 .platformToggle {
@@ -60,7 +21,6 @@
 .toggleButtons {
     display: flex;
     justify-content: center;
-    max-width: none;
     width: fit-content;
     margin: 0 auto 32px auto;
     background: rgba(0, 212, 255, 0.08);
@@ -74,42 +34,18 @@
 }
 
 .toggleBtn {
-        padding: 8px 20px;
-        margin: 0;
-        border: none;
-        background: transparent !important;
-        font-size: 1rem;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        font-family: var(--font-body);
-        font-weight: 500;
-        position: relative;
-        z-index: 2;
-    /* Remove color from parent, set only in .toggleBtn:not(.active) */
-}
-
-@media (prefers-color-scheme: dark) {
-    .toggleBtn {
-        color: #fff !important;
-    }
-}
-
- .toggleBtn:not(.active) {
-            color: #000 !important;
-            opacity: 1 !important;
-            font-weight: 600 !important;
-            background: transparent !important;
-            mix-blend-mode: normal !important;
- }
-
-@media (prefers-color-scheme: dark) {
-        .toggleBtn:not(.active) {
-            color: #fff !important;
-            opacity: 1 !important;
-            font-weight: 600 !important;
-            background: transparent !important;
-            mix-blend-mode: normal !important;
-        }
+    padding: 8px 20px;
+    margin: 0;
+    border: none;
+    background: transparent !important;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: var(--font-body);
+    font-weight: 600;
+    position: relative;
+    z-index: 2; /* keep above indicator */
+    color: var(--text-primary); /* theme-aware: white in dark, near-black in light */
 }
 
 .toggleBtn.active {
@@ -118,11 +54,8 @@
     font-size: 1.08rem;
     box-shadow: 0 4px 24px rgba(0,212,255,0.18);
     border-radius: 8px;
-    z-index: 2;
     transition: background 0.3s, color 0.3s, font-size 0.3s;
 }
-
-/* Removed misplaced lines and fixed block structure */
 
 .toggleBtn:hover:not(.active) {
     color: var(--text-primary);
@@ -159,7 +92,7 @@
 .platformText p {
     font-size: 1.1rem;
     line-height: 1.8;
-    color: #000 !important;
+    color: var(--text-primary);
     margin-bottom: 20px;
 }
 
@@ -181,7 +114,6 @@
     content: '✅';
     position: absolute;
     left: 0;
-    color: var(--accent-primary);
 }
 
 .demoContainer {
@@ -196,8 +128,16 @@
     min-height: 300px; /* Ensure it has some height */
 }
 
+/* Light-mode specific tweaks if body has .light-mode */
+.light-mode .toggleButtons {
+    background-color: var(--bg-primary);
+}
 
-
+.light-mode .platformText p,
+.light-mode .platformText h3,
+.light-mode .platformText ul li {
+    color: var(--text-primary);
+}
 
 @media (max-width: 600px) {
     .platformSection {
@@ -227,24 +167,4 @@
         padding: 6px;
         min-height: 100px;
     }
-}
-
-/* Light mode adjustments */
-.light-mode .toggleButtons {
-    background-color: var(--bg-primary);
-}
-
-.light-mode .toggleBtn {
-    color: #000 !important; /* Black text for inactive buttons in light mode */
-}
-
-.light-mode .toggleBtn.active {
-    background-color: var(--accent-primary);
-    color: #ffffff;
-}
-
-.light-mode .platformSection h3,
-.light-mode .platformSection p,
-.light-mode .platformSection ul li {
-    color: var(--text-primary);
 }

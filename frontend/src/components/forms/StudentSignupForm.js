@@ -32,7 +32,8 @@ const StudentSignupForm = ({ onClose }) => {
         try {
             await signup(formData, 'student');
             onClose();
-            navigate('/dashboard'); // Redirect to dashboard after successful signup
+            // Redirect to profile where students can view/update their info
+            navigate('/profile');
         } catch (err) {
             setError(err.response?.data?.message || 'Signup failed.');
         }
@@ -68,12 +69,15 @@ const StudentSignupForm = ({ onClose }) => {
             <div>
                 <label className={styles.checkboxLabel}>Your Skills</label>
                 <div className={styles.checkboxGroup}>
-                    {['React', 'Node.js', 'Python', 'Machine Learning', 'UI/UX', 'Go'].map(skill => (
-                        <div className={styles.checkboxItem} key={skill}>
-                            <input type="checkbox" id={skill} name="skills" value={skill} onChange={handleSkillsChange} />
-                            <label htmlFor={skill}>{skill}</label>
-                        </div>
-                    ))}
+                    {['React', 'Node.js', 'Python', 'Machine Learning', 'UI/UX', 'Go'].map((skill) => {
+                        const id = `skill-${skill.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
+                        return (
+                            <div className={styles.checkboxItem} key={skill}>
+                                <input type="checkbox" id={id} name="skills" value={skill} onChange={handleSkillsChange} />
+                                <label htmlFor={id}>{skill}</label>
+                            </div>
+                        );
+                    })}
                 </div>
             </div>
             

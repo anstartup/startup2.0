@@ -1,23 +1,29 @@
 .form {
-    background-color: var(--bg-card);
+    background: linear-gradient(180deg, var(--bg-card), var(--bg-primary));
     padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 5px 15px var(--shadow-color);
+    border-radius: 14px;
+    box-shadow: 0 10px 24px var(--shadow-color);
     color: var(--text-primary);
     max-width: 450px;
-    margin: 20px auto;
+    margin: 12px auto;
     border: 1px solid var(--border-color);
+    position: relative;
 }
 
 .form h2 {
+    position: sticky;
+    top: -30px; /* anchored to modal padding */
+    background: linear-gradient(180deg, var(--bg-card) 70%, transparent);
+    padding-top: 16px;
     text-align: center;
     margin-bottom: 25px;
     color: var(--text-primary);
     font-size: 1.8rem;
+    z-index: 1;
 }
 
 .formGroup {
-    margin-bottom: 20px;
+    margin-bottom: 18px;
 }
 
 .formGroup label {
@@ -34,13 +40,15 @@
 .formGroup textarea,
 .formGroup select {
     width: 100%;
-    padding: 12px;
+    padding: 10px 12px;
     border: 1px solid var(--border-color);
-    border-radius: 5px;
+    border-radius: 10px;
     background-color: var(--bg-primary);
     color: var(--text-primary);
     font-size: 1rem;
     transition: border-color 0.3s ease;
+    min-height: 42px;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.02);
 }
 
 .formGroup input:focus,
@@ -48,6 +56,7 @@
 .formGroup select:focus {
     border-color: var(--accent-primary);
     outline: none;
+    box-shadow: 0 0 0 3px rgba(0,212,255,0.2);
 }
 
 .errorMessage {
@@ -58,7 +67,7 @@
 }
 
 .submitButton {
-    margin-top: 25px;
+    margin-top: 16px;
 }
 
 .switchFormText {
@@ -95,7 +104,7 @@
     align-items: center;
     background-color: var(--bg-primary);
     border: 1px solid var(--border-color);
-    border-radius: 5px;
+    border-radius: 999px;
     padding: 8px 12px;
     cursor: pointer;
     transition: all 0.2s ease;
@@ -103,6 +112,7 @@
 
 .checkboxItem:hover {
     border-color: var(--accent-primary);
+    box-shadow: 0 0 0 3px rgba(0,212,255,0.12);
 }
 
 .checkboxItem input[type="checkbox"] {
@@ -126,7 +136,7 @@
 @media (max-width: 900px) {
     .form {
         max-width: 98vw;
-        padding: 18px;
+        padding: 16px;
     }
     .form h2 {
         font-size: 1.2rem;
@@ -138,8 +148,12 @@
         font-size: 0.97rem;
         padding: 10px;
     }
-    .submitButton {
-        margin-top: 12px;
+    .submitButton { 
+        position: sticky;
+        bottom: -30px; /* anchor to modal padding */
+        background: linear-gradient(0deg, var(--bg-card) 60%, transparent);
+        padding-top: 12px;
+        margin-top: 16px;
     }
     .switchFormText {
         font-size: 0.97rem;
@@ -150,7 +164,7 @@
 @media (max-width: 600px) {
     .form {
         max-width: 100vw;
-        padding: 8px;
+        padding: 10px;
         font-size: 0.97rem;
     }
     .form h2 {
@@ -163,12 +177,9 @@
         font-size: 0.95rem;
         padding: 7px;
     }
-    .submitButton {
-        margin-top: 6px;
-    }
+    .submitButton { margin-top: 8px; }
     .switchFormText {
         font-size: 0.95rem;
-        margin-top: 6px;
     }
 }
 

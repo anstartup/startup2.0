@@ -1,22 +1,23 @@
-
-
 import React, { useState, useRef } from 'react';
 import { useTheme } from '../../contexts/ThemeContext';
 import { useAuth } from '../../contexts/AuthContext';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import styles from './Header.module.css';
-import Button from './Button';
-import { useNavigate } from 'react-router-dom';
+import Button from './Button'; 
 
 const Header = ({ onLoginClick, onSignupClick }) => {
     const { theme, toggleTheme } = useTheme();
     const { user, logout } = useAuth();
+    const location = useLocation();
+    const navigate = useNavigate();
+    
+    const themeClass = theme === 'light' ? styles.light : '';
+    
+    const isLandingPage = location.pathname === '/';
 
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const dropdownRef = useRef(null);
-    const themeClass = theme === 'light' ? styles.light : '';
-    const navigate = useNavigate();
 
-    // Close dropdown when clicking outside
     React.useEffect(() => {
         function handleClickOutside(event) {
             if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -33,7 +34,6 @@ const Header = ({ onLoginClick, onSignupClick }) => {
         };
     }, [dropdownOpen]);
 
-    // Navigation handlers
     const handleProfile = () => {
         setDropdownOpen(false);
         navigate('/profile');
@@ -43,11 +43,11 @@ const Header = ({ onLoginClick, onSignupClick }) => {
         navigate('/settings');
     };
 
-    // Handler for logo click
     const handleLogoClick = (e) => {
         e.preventDefault();
         navigate('/');
     };
+
     return (
         <header className={`${styles.header} ${themeClass}`}>
             <nav className={`container ${styles.nav}`}>
@@ -55,8 +55,17 @@ const Header = ({ onLoginClick, onSignupClick }) => {
                     Skillexer
                 </a>
                 <ul className={styles.navLinks}>
-                    <li><a href="#features">Features</a></li>
-                    <li><a href="#platform">Platform</a></li>
+                    {isLandingPage ? (
+                        <>
+                            <li><a href="#features">Features</a></li>
+                            <li><a href="#platform">Platform</a></li>
+                        </>
+                    ) : user ? (
+                        <>
+                            <li><Link to="/profile">Profile</Link></li>
+                            <li><Link to="/settings">Settings</Link></li>
+                        </>
+                    ) : null}
                 </ul>
                 <div className={styles.authButtons}>
                     <button className={styles.themeToggle} onClick={toggleTheme} title="Toggle theme">
@@ -70,7 +79,6 @@ const Header = ({ onLoginClick, onSignupClick }) => {
                                 aria-haspopup="true"
                                 aria-expanded={dropdownOpen}
                             >
-                                {/* Avatar circle with initials */}
                                 <span className={styles.avatarCircle}>
                                     {user.name ? user.name.split(' ').map(n => n[0]).join('').toUpperCase() : 'U'}
                                 </span>
@@ -88,6 +96,7 @@ const Header = ({ onLoginClick, onSignupClick }) => {
                     ) : (
                         <div className={styles.guestActions}>
                             <Button onClick={onLoginClick} variant="secondary">Login</Button>
+                            {/* <Button onClick={onSignupClick} variant="primary">Get Started</Button> */}
                         </div>
                     )}
                 </div>
