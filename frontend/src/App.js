@@ -14,8 +14,14 @@ import StudentSignupForm from './components/forms/StudentSignupForm';
 import RecruiterSignupForm from './components/forms/RecruiterSignupForm';
 import Button from './components/layout/Button';
 import Profile from './components/pages/Profile';
+import Overview from './components/pages/profile/Overview';
+import Opportunities from './components/pages/profile/Opportunities';
+import Endorsements from './components/pages/profile/Endorsements';
+import Collaboration from './components/pages/profile/Collaboration';
+import TrendingSkills from './components/pages/profile/TrendingSkills';
 import Settings from './components/pages/Settings';
 import styles from './components/forms/Form.module.css';
+import { Navigate } from 'react-router-dom';
 
 const SignupChoice = ({ switchToModal }) => (
     <div className={styles.form} style={{ gap: '1rem' }}>
@@ -54,7 +60,15 @@ function MainApp() {
                             <Platform />
                         </>
                     } />
-                    <Route path="/profile" element={<Profile />} />
+                    {/* Redirect legacy dashboard paths to current routes */}
+                    <Route path="/dashboard/*" element={<Navigate to="/profile" replace />} />
+                    <Route path="/profile" element={<Profile />}>
+                        <Route index element={<Overview />} />
+                        <Route path="opportunities" element={<Opportunities />} />
+                        <Route path="endorsements" element={<Endorsements />} />
+                        <Route path="collaboration" element={<Collaboration />} />
+                        <Route path="trending-skills" element={<TrendingSkills />} />
+                    </Route>
                     <Route path="/settings" element={<Settings />} />
                 </Routes>
             </main>

@@ -5,7 +5,7 @@ const User = require('../models/User');
 const Profile = require('../models/Profile');
 
 const router = express.Router();
-const JWT_SECRET = process.env.JWT_SECRET;
+const JWT_SECRET = process.env.JWT_SECRET || 'dev_secret_change_me';
 
 // Student Signup
 router.post('/signup/student', async (req, res) => {
@@ -34,13 +34,13 @@ router.post('/signup/student', async (req, res) => {
 
 // Recruiter Signup
 router.post('/signup/recruiter', async (req, res) => {
-     try {
-        const { name, email, password, companyName } = req.body;
+      try {
+          const { name, email, password, companyName, companySize, hiringFor } = req.body;
         if (await User.findOne({ email })) {
             return res.status(400).json({ message: 'An account with this email already exists.' });
         }
 
-        const user = new User({ name, email, password, type: 'recruiter', companyName });
+          const user = new User({ name, email, password, type: 'recruiter', companyName, companySize, hiringFor });
         await user.save();
         
         const token = jwt.sign({ id: user._id, name: user.name, type: user.type }, JWT_SECRET, { expiresIn: '24h' });

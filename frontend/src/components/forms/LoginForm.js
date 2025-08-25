@@ -9,6 +9,19 @@ const LoginForm = ({ onClose, onSwitchToRegister }) => {
     const [error, setError] = React.useState('');
     const { login } = useAuth();
 
+    const handleDemoLogin = async (role) => {
+        setError('');
+        try {
+            const creds = role === 'recruiter'
+                ? { email: 'recruiter@example.com', password: 'password123' }
+                : { email: 'student@example.com', password: 'password123' };
+            await login(creds);
+            onClose();
+        } catch (err) {
+            setError(err.response?.data?.message || 'Login failed. Please try again.');
+        }
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         setError('');
@@ -55,6 +68,11 @@ const LoginForm = ({ onClose, onSwitchToRegister }) => {
 
             <div>
                 <Button type="submit" variant="primary" className="w-full">Login</Button>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                <Button type="button" variant="secondary" onClick={() => handleDemoLogin('student')}>Use demo student</Button>
+                <Button type="button" variant="secondary" onClick={() => handleDemoLogin('recruiter')}>Use demo recruiter</Button>
             </div>
 
             <p className="text-center text-sm text-zinc-600 dark:text-zinc-400 mt-2">
